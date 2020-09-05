@@ -80,20 +80,19 @@ def activate(request, uidb64, token):
         return HttpResponse('Activation link is invalid!')
 
 
-def login(request):
-    
+def handlelogin(request):
     if request.method =='POST':
-        loginusername = request.POST['uname']
-        loginpassword = request.POST['psw']   
+        loginusername = request.POST['loginusername']
+        loginpassword = request.POST['loginpassword']   
 
         user = authenticate(request,username=loginusername,password=loginpassword)
         if user is not None:
             login(request,user)
-            # messages.success(request,'Your Account has been Successfully logged in')
             return redirect('student')
         else:
-            # messages.error(request,'please try again later')
             return render(request,'login.html')
+	
+    return render(request,'login.html')
 	
 		
     return render(request,'login.html')
