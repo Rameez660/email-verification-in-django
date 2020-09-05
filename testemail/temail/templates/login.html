@@ -5,7 +5,7 @@
 <body>
     {% comment %} <h3>Thank you for your email confirmation. Now you can login your account.<h3> {% endcomment %}
     <h2>Login </h2>
-    <form action="{% url 'login' %}" method="post">
+    <form action="{% url 'handlelogin' %}" method="post">
       {% csrf_token %}
     <label><b>Username</b></label>
     <input type="text" placeholder="Enter Username" name="uname" required><br><br>
